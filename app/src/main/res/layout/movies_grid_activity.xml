@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?><!-- Layout for a list of news items -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grid_bg"
+    android:padding="@dimen/standardPadding">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_grid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"
+        android:dividerHeight="@dimen/noHeight"
+        android:orientation="vertical" />
+
+    <!-- Empty view is only visible when the GridView has no items. -->
+    <TextView
+        android:id="@+id/empty_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/error"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:visibility="invisible" />
+
+    <!-- Empty view is only visible when the is no internet connection -->
+    <TextView
+        android:id="@+id/no_connection_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/no_connection"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textStyle="bold"
+        android:visibility="invisible" />
+
+    <ProgressBar
+        android:id="@+id/pb_loading_indicator"
+        android:layout_width="@dimen/progressBarSize"
+        android:layout_height="@dimen/progressBarSize"
+        android:layout_gravity="center"
+        android:visibility="invisible" />
+
+</RelativeLayout>

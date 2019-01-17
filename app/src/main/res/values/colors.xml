@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="sectionColor">#420dab</color>
+    <color name="authorColor">#286d99</color>
+    <color name="titleColor">#23303D</color>
+    <color name="dateColor">#ababab</color>
+    <color name="timeColor">#ababab</color>
+
+    <!-- Background color for details -->
+    <color name="details_bg">#B9F6CA</color>
+
+    <!-- Background color for the card view -->
+    <color name="grid_bg">#3949AB</color>
+
+    <!-- Card View -->
+    <color name="cardview_shadow_end_color">#000000</color>
+
+    <color name="cardview_movie_title_color"> #FF0000</color>
+
+
+    <!-- Text color for details -->
+    <color name="details_text_dark_color">#2F1D1A</color>
+</resources>
