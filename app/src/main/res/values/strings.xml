@@ -1,22 +1,36 @@
 <resources>
-    <string name="app_name">PopularMoviesStage2</string>
+    <string name="app_name">MyMoviesApp</string>
+    <string name="details_activity_label">Movie Details</string>
+
     <string name="no_internet">No Internet connection.</string>
     <string name="no_connection">No Connection</string>
-    <string name="error">No Information Available.</string>
+    <string name="error">No movies to show…</string>
     <string name="settings">Settings</string>
-    <string name="connecting">"Connecting..."</string>
-
+    <string name="connecting">Connecting…</string>
+    <string name="no_reviews">No reviews are currently available.</string>
 
 
 
     <!-- Strings For Details Activity -->
     <string name="longPlaceHolder">Long title placeholder that should wrap to more than 2 lines
         of text. More and More and more and more and more</string>
+
+    <string name="details_title_placeholder">MOVIE TITLE LONG LONG LONG LONG LONG LONG LONG Placeholder</string>
+    <string name="details_add_to_favorites">Add to favorites :</string>
+    <string name="details_image_description">Image thumbnail of the movie</string>
+    <string name="details_heart_icon_description">Icon to indicate that movie is in the favorites</string>
+
     <string name="details_movie_title">Movie Title</string>
     <string name="details_movie_synopsis">Movie Synopsis</string>
     <string name="details_movie_rating">User Rating</string>
     <string name="details_movie_date">Release Date</string>
+    <string name="details_movie_trailers">Trailers:</string>
+    <string name="details_movie_trailers_link_1">Trailer link 1</string>
+    <string name="details_movie_trailers_link_2">Trailer link 2</string>
+    <string name="details_movie_reviews">Reviews:</string>
 
+    <string name="toast_trailer_link_1">The trailer is not available at the moment</string>
+    <string name="toast_trailer_link_2">The second trailer is not available at the moment</string>
 
     <!-- Strings For Sort-By Preference [CHAR LIMIT=30] -->
     <string name="settings_title">Movies Order Settings</string>

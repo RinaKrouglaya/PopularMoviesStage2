@@ -51,6 +51,59 @@ public final class NetworkUtils {
         return url;
     }
 
+      /**
+     * Builds the URL used to talk to the movie server.
+     *
+     * @return The URL to use to query reviews from the movie server.
+     */
+    public static URL buildReviewsUrl(String movieId) {
+        Log.v(TAG, movieId);
+        Uri builtUri = Uri.parse(THE_MOVIE_DB_REQUEST_URL).buildUpon()
+                .appendPath(movieId)
+                .appendPath("reviews")
+                .appendQueryParameter(API_KEY_LABEL_NAME, APIKey.API_KEY)
+                .build();
+
+        URL url = null;
+        try {
+            url = new URL(builtUri.toString());
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        Log.v(TAG, "Built URI for reviews query" + url);
+
+        return url;
+    }
+
+
+
+    /**
+     * Builds the URL used to talk to the movie server.
+     *
+     * @return The URL to use to query reviews from the movie server.
+     */
+    public static URL buildTrailersUrl(String movieId) {
+        Log.v(TAG, movieId);
+        Uri builtUri = Uri.parse(THE_MOVIE_DB_REQUEST_URL).buildUpon()
+                .appendPath(movieId)
+                .appendPath("videos")
+                .appendQueryParameter(API_KEY_LABEL_NAME, APIKey.API_KEY)
+                .build();
+
+        URL url = null;
+        try {
+            url = new URL(builtUri.toString());
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        Log.v(TAG, "Built URI for trailers query " + url);
+
+        return url;
+    }
+
+
     /**
      * This method returns the entire result from the HTTP response.
      *

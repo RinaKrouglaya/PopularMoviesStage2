@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,200 +17,274 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/details_margin"
+                android:background="@color/details_title_bg"
+
+                >
+
+                <TextView
+                    android:id="@+id/details_movie_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/open_sans"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/details_20"
+                    android:paddingBottom="@dimen/details_20"
+                    android:textAllCaps="true"
+                    android:textColor="@color/details_title_text"
+                    android:textSize="@dimen/details_title_text_size"
+                    tools:text="@string/details_title_placeholder"
+                   />
+            </RelativeLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-            <ImageView
-                android:id="@+id/details_movie_thumbnail"
-                android:layout_width="@dimen/image_width"
-                android:layout_height="@dimen/image_height"
-                android:layout_gravity="start"
-                android:adjustViewBounds="true"
-                android:padding="@dimen/overall_padding"
-                android:scaleType="centerCrop"
-                android:src="@drawable/noposter"
-                android:visibility="visible" />
 
                 <TextView
                     android:id="@+id/details_add_to_favorites"
-                    style="@style/RtlOverlay.Widget.AppCompat.Search.DropDown.Text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/details_movie_thumbnail"
-                   android:layout_toRightOf="@id/details_movie_thumbnail"
-                    android:layout_marginStart="@dimen/details_margin"
-                    android:layout_marginLeft="@dimen/details_margin"
-                    android:padding="@dimen/details_small_padding"
-                    android:paddingTop="@dimen/overall_padding"
-                    android:text="Add to favorites :"
+                    android:layout_marginStart="@dimen/details_8"
+                    android:layout_marginTop="@dimen/details_8"
+                    android:layout_marginEnd="@dimen/details_8"
+                    android:layout_marginBottom="@dimen/details_8"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="@string/details_add_to_favorites"
                     android:textColor="@color/details_text_dark_color"
-                    android:textStyle="bold"
-                    android:layout_marginTop="@dimen/details_margin_fav_top"/>
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/details_movie_thumbnail"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
                 <ImageView
                     android:id="@+id/details_heart"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:padding="@dimen/overall_padding"
+                    android:layout_marginStart="@dimen/details_8"
+                    android:layout_marginTop="@dimen/details_8"
+                    android:layout_marginEnd="@dimen/details_8"
+                    android:foregroundGravity="center_horizontal"
                     android:src="@drawable/favoritewhite"
-                    android:layout_below="@id/details_add_to_favorites"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginRight="@dimen/details_margin_heart"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/details_movie_thumbnail"
+                    app:layout_constraintTop_toBottomOf="@+id/details_add_to_favorites"
+                    android:contentDescription="@string/details_image_description" />
 
-                   />
+                <ProgressBar
+                    android:id="@+id/details_loading_indicator"
+                    android:layout_width="@dimen/progressBarSize"
+                    android:layout_height="@dimen/progressBarSize"
+                    android:layout_marginStart="@dimen/details_8"
+                    android:layout_marginBottom="@dimen/details_8"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/details_movie_thumbnail" />
+
+                <ImageView
+                    android:id="@+id/details_movie_thumbnail"
+                    android:layout_width="@dimen/image_width"
+                    android:layout_height="@dimen/image_height"
+                    android:layout_marginStart="@dimen/details_margin"
+
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/noposter"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/details_heart_icon_description" />
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:id="@+id/divider_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/details_3"
+                    android:layout_marginStart="@dimen/details_100"
+                    android:layout_marginTop="@dimen/details_8"
+                    android:layout_marginEnd="@dimen/details_100"
+                    android:background="@color/details_divider"
+                    android:foregroundGravity="center_horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/details_synopsis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/details_32"
+                    android:layout_marginTop="@dimen/details_8"
+                    android:layout_marginEnd="@dimen/details_32"
+                    android:paddingLeft="@dimen/standardPadding"
+                    android:paddingRight="@dimen/standardPadding"
+                    android:textColor="@color/details_text_dark_color"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider_top"
+                    tools:text="details_synopsis" />
+
+                <View
+                    android:id="@+id/divider_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/details_3"
+                    android:layout_marginStart="@dimen/details_100"
+                    android:layout_marginTop="@dimen/details_8"
+                    android:layout_marginEnd="@dimen/details_100"
+                    android:layout_marginBottom="@dimen/details_8"
+                    android:background="@color/details_divider"
+                    android:foregroundGravity="center_horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/date_container" />
+
+                <RelativeLayout
+                    android:id="@+id/rating_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/details_margin"
+                    android:layout_marginEnd="@dimen/details_48"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/details_synopsis">
+
+                    <TextView
+                        android:id="@+id/details_rating_label"
+                        style="@style/RtlOverlay.Widget.AppCompat.Search.DropDown.Text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/details_movie_rating"
+                        android:textColor="@color/details_text_dark_color"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/details_rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/details_rating_label"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/details_8"
+                        android:textAlignment="center"
+                        android:textColor="@color/details_text_dark_color"
+                        app:layout_constraintTop_toBottomOf="@+id/details_rating_label"
+                        tools:text="details_rating" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/date_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/details_48"
+                    android:layout_marginTop="@dimen/details_margin"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/details_synopsis">
+
+                    <TextView
+                        android:id="@+id/details_date_label"
+                        style="@style/RtlOverlay.Widget.AppCompat.Search.DropDown.Text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/details_movie_date"
+                        android:textColor="@color/details_text_dark_color"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/details_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/details_date_label"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/details_8"
+                        android:textColor="@color/details_text_dark_color"
+                        app:layout_constraintTop_toBottomOf="@+id/details_date_label"
+                        tools:layout_editor_absoluteX="268dp"
+                        tools:text="details_date" />
+                </RelativeLayout>
+
+            </android.support.constraint.ConstraintLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/details_trailers_label"
+                    style="@style/RtlOverlay.Widget.AppCompat.Search.DropDown.Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginStart="@dimen/details_margin"
+                    android:padding="@dimen/details_small_padding"
+                    android:paddingTop="@dimen/overall_padding"
+                    android:text="@string/details_movie_trailers"
+                    android:textColor="@color/details_text_dark_color"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/details_trailer_link_first"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/details_trailers_label"
+                    android:layout_marginStart="@dimen/details_48"
+                    android:drawableStart="@drawable/ic_play"
+                    android:paddingBottom="@dimen/details_line_padding"
+                    android:text="@string/details_movie_trailers_link_1"
+                    android:textColor="@color/details_text_dark_color" />
+
+                <TextView
+                    android:id="@+id/details_trailer_link_second"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/details_trailers_label"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/details_48"
+                    android:drawableStart="@drawable/ic_play"
+                    android:paddingBottom="@dimen/details_line_padding"
+                    android:text="@string/details_movie_trailers_link_2"
+                    android:textColor="@color/details_text_dark_color" />
 
             </RelativeLayout>
-            <TextView
-                android:id="@+id/details_title_label"
-                style="@style/RtlOverlay.Widget.AppCompat.Search.DropDown.Text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/details_margin"
-                android:layout_marginLeft="@dimen/details_margin"
-                android:padding="@dimen/details_small_padding"
-                android:paddingTop="@dimen/overall_padding"
-                android:text="@string/details_movie_title"
-                android:textColor="@color/details_text_dark_color"
-                android:textStyle="bold" />
-
-
-            <TextView
-                android:id="@+id/details_movie_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/overall_padding"
-                android:paddingRight="@dimen/overall_padding"
-                android:paddingBottom="@dimen/details_line_padding"
-                android:textColor="@color/details_text_dark_color"
-                tools:text="details_movie_title" />
-
-            <TextView
-                android:id="@+id/details_synopsis_label"
-                style="@style/RtlOverlay.Widget.AppCompat.Search.DropDown.Text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/details_margin"
-                android:layout_marginLeft="@dimen/details_margin"
-                android:padding="@dimen/details_small_padding"
-                android:paddingTop="@dimen/overall_padding"
-                android:text="@string/details_movie_synopsis"
-                android:textColor="@color/details_text_dark_color"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/details_synopsis"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/overall_padding"
-                android:paddingRight="@dimen/overall_padding"
-                android:paddingBottom="@dimen/details_line_padding"
-                android:textColor="@color/details_text_dark_color"
-                tools:text="details_synopsis" />
-
-            <TextView
-                android:id="@+id/details_rating_label"
-                style="@style/RtlOverlay.Widget.AppCompat.Search.DropDown.Text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/details_margin"
-                android:layout_marginLeft="@dimen/details_margin"
-                android:padding="@dimen/details_small_padding"
-                android:paddingTop="@dimen/overall_padding"
-                android:text="@string/details_movie_rating"
-                android:textColor="@color/details_text_dark_color"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/details_rating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/overall_padding"
-                android:paddingRight="@dimen/overall_padding"
-                android:paddingBottom="@dimen/details_line_padding"
-                android:textColor="@color/details_text_dark_color"
-                tools:text="details_rating" />
-
-            <TextView
-                android:id="@+id/details_date_label"
-                style="@style/RtlOverlay.Widget.AppCompat.Search.DropDown.Text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/details_margin"
-                android:layout_marginLeft="@dimen/details_margin"
-                android:padding="@dimen/details_small_padding"
-                android:paddingTop="@dimen/overall_padding"
-                android:text="@string/details_movie_date"
-                android:textColor="@color/details_text_dark_color"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/details_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/overall_padding"
-                android:paddingRight="@dimen/overall_padding"
-                android:paddingBottom="@dimen/details_line_padding"
-                android:textColor="@color/details_text_dark_color"
-                tools:text="details_date" />
-
-            <TextView
-                android:id="@+id/details_trailer_first_label"
-                style="@style/RtlOverlay.Widget.AppCompat.Search.DropDown.Text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/details_margin"
-                android:layout_marginLeft="@dimen/details_margin"
-                android:padding="@dimen/details_small_padding"
-                android:paddingTop="@dimen/overall_padding"
-                android:text="Trailer 1"
-                android:textColor="@color/details_text_dark_color"
-                android:textStyle="bold" />
-
-            <VideoView
-                android:id="@+id/details_trailer_first"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:id="@+id/details_trailer_second_label"
-                style="@style/RtlOverlay.Widget.AppCompat.Search.DropDown.Text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/details_margin"
-                android:layout_marginLeft="@dimen/details_margin"
-                android:padding="@dimen/details_small_padding"
-                android:paddingTop="@dimen/overall_padding"
-                android:text="Trailer 2"
-                android:textColor="@color/details_text_dark_color"
-                android:textStyle="bold" />
-
-            <VideoView
-                android:id="@+id/details_trailer_second"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
 
             <TextView
                 android:id="@+id/details_trailer_reviews_label"
                 style="@style/RtlOverlay.Widget.AppCompat.Search.DropDown.Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/details_margin"
-                android:layout_marginLeft="@dimen/details_margin"
+                android:layout_gravity="center_horizontal"
                 android:padding="@dimen/details_small_padding"
                 android:paddingTop="@dimen/overall_padding"
-                android:text="Reviews"
+                android:text="@string/details_movie_reviews"
                 android:textColor="@color/details_text_dark_color"
                 android:textStyle="bold" />
+
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/details_reviews"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/overall_padding"
-                android:paddingRight="@dimen/overall_padding"
-                android:paddingBottom="@dimen/details_line_padding"
-                android:textColor="@color/details_text_dark_color"
-                tools:text="reviews" />
+                android:isScrollContainer="true">
+
+                <TextView
+                    android:id="@+id/details_reviews"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/overall_padding"
+                    android:paddingRight="@dimen/overall_padding"
+                    android:paddingBottom="@dimen/details_line_padding"
+                    android:textColor="@color/details_text_dark_color"
+                    tools:text="@string/longPlaceHolder" />
             </ScrollView>
         </LinearLayout>
     </ScrollView>

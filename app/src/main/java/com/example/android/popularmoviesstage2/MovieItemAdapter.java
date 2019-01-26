@@ -1,6 +1,7 @@
 package com.example.android.popularmoviesstage2;
 
 import android.content.Context;
+import android.os.Parcelable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.android.popularmoviesstage2.database.FavoriteMovieEntry;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -20,6 +22,7 @@ public class MovieItemAdapter extends RecyclerView.Adapter<MovieItemAdapter.Movi
 
     private static final String TAG = MovieItemAdapter.class.getSimpleName();
     private ArrayList<MovieItem> mListOfMovieItemsData;
+    private ArrayList<FavoriteMovieEntry> mListOfFavoritesData;
 
     /*
      * An on-click handler that  defined to make it easy for an Activity to interface with
@@ -39,7 +42,9 @@ public class MovieItemAdapter extends RecyclerView.Adapter<MovieItemAdapter.Movi
      * The interface that receives onClick messages.
      */
     public interface ListItemClickListener {
+
         void onListItemClick(int clickedItemIndex);
+
     }
 
     /**
@@ -115,8 +120,6 @@ public class MovieItemAdapter extends RecyclerView.Adapter<MovieItemAdapter.Movi
         MovieViewHolder viewHolder = new MovieViewHolder(cardView);
 
         viewHolderCount++;
-        Log.d(TAG, "onCreateViewHolder: number of ViewHolders created: "
-                + viewHolderCount);
         return viewHolder;
     }
 
@@ -132,7 +135,7 @@ public class MovieItemAdapter extends RecyclerView.Adapter<MovieItemAdapter.Movi
      */
     @Override
     public void onBindViewHolder(MovieViewHolder holder, int position) {
-        Log.d(TAG, "#" + position);
+      //  Log.d(TAG, "#" + position);
 
         if (mListOfMovieItemsData!=null) {
             MovieItem currentMovie = mListOfMovieItemsData.get(position);
@@ -169,5 +172,7 @@ public class MovieItemAdapter extends RecyclerView.Adapter<MovieItemAdapter.Movi
         mListOfMovieItemsData = movieData;
         notifyDataSetChanged();
     }
+
+
 
 }

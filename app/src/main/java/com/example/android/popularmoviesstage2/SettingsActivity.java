@@ -3,11 +3,18 @@ package com.example.android.popularmoviesstage2;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.MenuItem;
+
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -16,55 +23,22 @@ public class SettingsActivity extends AppCompatActivity {
     protected void  onCreate (Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_activity);
+        ActionBar actionBar = this.getSupportActionBar();
+
+        // Set the action bar back button to look like an up button
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
     }
-
-    public static class MoviesPreferenceFragment extends PreferenceFragment
-            implements Preference.OnPreferenceChangeListener{
-        @Override
-        public void onCreate (Bundle savedInstanceState){
-            super.onCreate(savedInstanceState);
-            addPreferencesFromResource(R.xml.settings_main);
-
-            Preference sectionSelection =
-                    findPreference(getString(R.string.settings_sort_parameter));
-            bindPreferenceSummaryToValue(sectionSelection);
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        // When the home button is pressed, take the user back to the VisualizerActivity
+        if (id == android.R.id.home) {
+            NavUtils.navigateUpFromSameTask(this);
         }
-
-        @Override
-        public boolean onPreferenceChange(Preference preference, Object value) {
-            String stringValue = value.toString();
-            if (preference instanceof ListPreference)
-            {
-
-                // For list preferences, look up the correct display value in
-                // the preference's 'entries' list.
-
-                ListPreference listPreference = (ListPreference) preference;
-                int prefIndex = listPreference.findIndexOfValue(stringValue);
-                if (prefIndex >= 0)
-                {
-                    CharSequence[] labels = listPreference.getEntries();
-                    preference.setSummary(labels[prefIndex]);
-                }
-            }
-            else
-            {
-                // For all other preferences, set the summary to the value's
-                // simple string representation.
-                preference.setSummary(stringValue);
-
-            }
-            return true;
-        }
-
-        private void bindPreferenceSummaryToValue(Preference preference) {
-            preference.setOnPreferenceChangeListener(this);
-            SharedPreferences preferences =
-                    PreferenceManager.getDefaultSharedPreferences(preference.getContext());
-            String preferenceString = preferences.getString(preference.getKey(), getString(R.string.settings_default_sort_by_popularity));
-            onPreferenceChange(preference, preferenceString);
-        }
+        return super.onOptionsItemSelected(item);
     }
 
 

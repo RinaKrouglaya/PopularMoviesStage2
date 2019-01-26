@@ -7,11 +7,11 @@ import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 /**
- * A {@link  FavoriteMovieItem} object contains information related to a single  FavoriteMovieItem.
+ * A {@link  FavoriteMovieEntry} object contains information related to a single  FavoriteMovieEntry.
  */
 
 @Entity (tableName = "favorites")
-public class FavoriteMovieItem {
+public class FavoriteMovieEntry {
 
     private String title;
     private String poster;
@@ -29,9 +29,9 @@ public class FavoriteMovieItem {
 
 
 
-    public FavoriteMovieItem(String title, String poster , String thumbnail,
-                             String synopsis, String rating,
-                             String externalId, String date, int localId ) {
+    public FavoriteMovieEntry(String title, String poster , String thumbnail,
+                              String synopsis, String rating,
+                              String externalId, String date, int localId ) {
         this.title = title;
         this.poster = poster;
         this.thumbnail = thumbnail;
@@ -46,9 +46,9 @@ public class FavoriteMovieItem {
 
 
     @Ignore
-    public FavoriteMovieItem(String title, String poster , String thumbnail,
-                             String synopsis, String rating,
-                             String externalId, String date ) {
+    public FavoriteMovieEntry(String title, String poster , String thumbnail,
+                              String synopsis, String rating,
+                              String externalId, String date ) {
         this.title = title;
         this.poster = poster;
         this.thumbnail = thumbnail;

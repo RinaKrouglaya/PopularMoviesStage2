@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#844f4f</color>
 
     <color name="sectionColor">#420dab</color>
     <color name="authorColor">#286d99</color>
@@ -11,10 +11,14 @@
     <color name="timeColor">#ababab</color>
 
     <!-- Background color for details -->
-    <color name="details_bg">#B9F6CA</color>
+    <color name="details_bg">#4cb5a6</color>
+
+    <color name="details_title_bg">#00574b</color>
+    <color name="details_divider">#3C433F</color>
+    <color name="details_title_text">#f4fffa</color>
 
     <!-- Background color for the card view -->
-    <color name="grid_bg">#3949AB</color>
+    <color name="grid_bg">#00574B</color>
 
     <!-- Card View -->
     <color name="cardview_shadow_end_color">#000000</color>

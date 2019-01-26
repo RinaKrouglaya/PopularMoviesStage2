@@ -9,7 +9,7 @@
     <dimen name="titleTextSize">20sp</dimen>
     <dimen name="smallMargin">5dp</dimen>
     <dimen name="authorTextSize">16sp</dimen>
-    <dimen name="dateTextSize">12sp</dimen>
+    <dimen name="details_title_text_size">30sp</dimen>
     <dimen name="timeTextSize">12sp</dimen>
 
     <dimen name="progressBarSize">42dp</dimen>
@@ -29,4 +29,10 @@
     <dimen name="details_margin_heart">50dp</dimen>
     <dimen name="details_margin_fav_top">20dp</dimen>
 
+    <dimen name="details_20">20dp</dimen>
+    <dimen name="details_8">8dp</dimen>
+    <dimen name="details_3">3dp</dimen>
+    <dimen name="details_100">100dp</dimen>
+    <dimen name="details_32">32dp</dimen>
+    <dimen name="details_48">48dp</dimen>
 </resources>
